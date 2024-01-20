@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Gallery</title>
+    <style>
+        /* Add your styling here */
+        .media-item {
+            display: inline-block;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Media Gallery</h1>
+
+    <div id="filter-options">
+        <label><input type="checkbox" class="tag-filter" value="nature"> Nature</label>
+        <label><input type="checkbox" class="tag-filter" value="travel"> Travel</label>
+        <label><input type="checkbox" class="tag-filter" value="architecture"> Architecture</label>
+    </div>
+
+    <div id="media-grid">
+        <!-- Media items will be dynamically added here -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mediaData = [
+                { src: 'nature1.jpg', tags: ['nature', 'landscape'] },
+                { src: 'travel1.jpg', tags: ['travel', 'beach'] },
+                { src: 'architecture1.jpg', tags: ['architecture', 'city'] },
+                // Add more media items with corresponding tags
+            ]; 
+
+            const filterOptions = document.getElementById('filter-options');
+            const mediaGrid = document.getElementById('media-grid');
+
+            // Initial display of all media items
+            displayMedia(mediaData);
+
+            // Add event listener to checkboxes
+            filterOptions.addEventListener('change', function () {
+                const selectedTags = Array.from(document.querySelectorAll('.tag-filter:checked')).map(checkbox => checkbox.value);
+                const filteredMedia = filterMediaByTags(mediaData, selectedTags);
+                displayMedia(filteredMedia);
+            });
+
+            function filterMediaByTags(mediaArray, selectedTags) {
+                return mediaArray.filter(item => {
+                    return selectedTags.every(tag => item.tags.includes(tag));
+                });
+            }
+
+            function displayMedia(mediaArray) {
+                mediaGrid.innerHTML = ''; // Clear existing content
+
+                mediaArray.forEach(item => {
+                    const mediaItem = document.createElement('div');
+                    mediaItem.className = 'media-item';
+                    mediaItem.innerHTML = `<img src="${item.src}" alt="Media Item">`;
+                    mediaGrid.appendChild(mediaItem);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+Replace the placeholder image source (src) with your actual media URLs and customize the tags accordingly. -->
