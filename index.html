@@ -15,7 +15,7 @@
 </head>
 <body style="background-color: #2e2e2e; " text="#ffffff" link="#ff0000" vlink="#ff0000" alink="#ff0000">
 
-    <h1>d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d  </h1>
+    <h5>d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d  </h5>
 
     <div id="filter-options">
         <label><input type="checkbox" class="tag-filter" value="postreel"> post-réel</label>
@@ -36,48 +36,67 @@
         <!-- Media items will be dynamically added here -->
     </div>
 
+
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const mediaData = [
-                {
-                    <embed src: 'https://vimeo.com/646227605' >
-    , tags: ['nature', 'landscape'] },
-                { src: 'https://static.wixstatic.com/media/ef8f85_56b68e39a6de4d278d6cddbee9995921~mv2.jpg/v1/fill/w_508,h_370,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/ef8f85_56b68e39a6de4d278d6cddbee9995921~mv2.jpg', tags: ['travel', 'beach'] },
-                { src: '<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/mBp9LH-vZVI?si=CnQzhb4pWOFbWPm5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>', tags: ['architecture', 'city'] },
-    // Add more media items with corresponding tags
-                </embed>
-    ];
+                { type:'vimeo', id: '646227605' , tags: ['clarteinflammable', 'landscape'] },
+            { type: 'image', src: 'https://static.wixstatic.com/media/ef8f85_56b68e39a6de4d278d6cddbee9995921~mv2.jpg/v1/fill/w_508,h_370,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/ef8f85_56b68e39a6de4d278d6cddbee9995921~mv2.jpg', tags: ['travel', 'beach'] },
+                { type: 'youtube', id: 'mBp9LH-vZVI', tags: ['peaux', 'selfstrange'] },
+        // Add more media items with corresponding tags
+                  
+        ];
 
-    const filterOptions = document.getElementById('filter-options');
-    const mediaGrid = document.getElementById('media-grid');
+        const filterOptions = document.getElementById('filter-options');
+        const mediaGrid = document.getElementById('media-grid');
 
-    // Initial display of all media items
-    displayMedia(mediaData);
+        // Initial display of all media items
+        displayMedia(mediaData);
 
-    // Add event listener to checkboxes
-    filterOptions.addEventListener('change', function () {
-    const selectedTags = Array.from(document.querySelectorAll('.tag-filter:checked')).map(checkbox => checkbox.value);
-    const filteredMedia = filterMediaByTags(mediaData, selectedTags);
-    displayMedia(filteredMedia);
-    });
+        // Add event listener to checkboxes
+        filterOptions.addEventListener('change', function () {
+            const selectedTags = Array.from(document.querySelectorAll('.tag-filter:checked')).map(checkbox => checkbox.value);
+            const filteredMedia = filterMediaByTags(mediaData, selectedTags);
+            displayMedia(filteredMedia);
+        });
 
-    function filterMediaByTags(mediaArray, selectedTags) {
-    return mediaArray.filter(item => {
-    return selectedTags.every(tag => item.tags.includes(tag));
-    });
-    }
+        function filterMediaByTags(mediaArray, selectedTags) {
+            return mediaArray.filter(item => {
+                return selectedTags.every(tag => item.tags.includes(tag));
+            });
+        }
 
-    function displayMedia(mediaArray) {
-    mediaGrid.innerHTML = ''; // Clear existing content
+        function displayMedia(mediaArray) {
+            mediaGrid.innerHTML = ''; // Clear existing content
 
-    mediaArray.forEach(item => {
-    const mediaItem = document.createElement('div');
-    mediaItem.className = 'media-item';
-    mediaItem.innerHTML = `<img src="${item.src}" alt="Media Item">`;
-    mediaGrid.appendChild(mediaItem);
-    });
-    }
-    });
+            mediaArray.forEach(item => {
+                const mediaItem = document.createElement('div');
+                mediaItem.className = 'media-item';
+
+                if (item.type === 'image') {
+                    mediaItem.innerHTML = `<img src="${item.src}" alt="Media Item">`;
+                } else if (item.type === 'vimeo') {
+                    const vimeoIframe = document.createElement('iframe');
+                    vimeoIframe.src = `https://player.vimeo.com/video/${item.id}`;
+                    vimeoIframe.width = '300';
+                    vimeoIframe.height = '200';
+                    vimeoIframe.frameborder = '0';
+                    mediaItem.appendChild(vimeoIframe);
+                } else if (item.type === 'youtube') {
+                    const youtubeIframe = document.createElement('iframe');
+                    youtubeIframe.src = `https://www.youtube.com/embed/${item.id}`;
+                    youtubeIframe.width = '300';
+                    youtubeIframe.height = '200';
+                    youtubeIframe.frameborder = '0';
+                    mediaItem.appendChild(youtubeIframe);
+                }
+
+                mediaGrid.appendChild(mediaItem);
+            });
+        }
+        });
     </script>
 
 </body>
