@@ -15,7 +15,7 @@
 </head>
 <body style="background-color: #2e2e2e; " text="#ffffff" link="#ff0000" vlink="#ff0000" alink="#ff0000">
 
-    <h5>d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d  </h5>
+    <h8>d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d  </h8>
 
     <div id="filter-options">
         <label><input type="checkbox" class="tag-filter" value="postreel"> post-réel</label>
@@ -30,6 +30,8 @@
         <label><input type="checkbox" class="tag-filter" value="murs"> murs</label>
         <label><input type="checkbox" class="tag-filter" value="cendres"> cendres</label>
         <label><input type="checkbox" class="tag-filter" value="clarteinflammable"> clarté inflammable</label>
+        <label><input type="checkbox" class="tag-filter" value="erosion"> érosion</label>
+        <label><input type="checkbox" class="tag-filter" value="music"> MUSIC</label>
     </div>
 
     <div id="media-grid">
@@ -42,7 +44,21 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const mediaData = [
-                { type:'vimeo', id: '646227605' , tags: ['clarteinflammable', 'landscape'] },
+                { type: 'vimeo', id: '646227605', tags: ['clarteinflammable'] }, //to the present by passing by
+                { type: 'vimeo', id: '615076340', tags: ['clarteinflammable', 'oiseaux'] }, //ouv ciel
+                { type: 'vimeo', id: '605924941', tags: ['ghosts'] }, //about ghosts
+                { type: 'vimeo', id: '605906808', tags: ['selfstrange', 'outrenoir', 'peaux'] }, //antispecist meat
+                { type: 'vimeo', id: '495617346', tags: ['outrenoir', 'selfstrange'] }, //everything asleep
+                { type: 'vimeo', id: '495276438', tags: ['oiseaux', 'murs', 'cendres'] }, //no time
+                { type: 'vimeo', id: '273010971', tags: ['clarteinflammable', 'peaux', 'sparkles'] }, //sourd
+                { type: 'vimeo', id: '271586935', tags: ['revolvingdoors'] }, //003
+                { type: 'vimeo', id: '255096648', tags: ['outrenoir'] }, //jour opaque
+                { type: 'vimeo', id: '250028342', tags: ['revolvingdoors'] }, //002
+                { type: 'vimeo', id: '250023909', tags: ['revolvingdoors'] }, //001
+                { type: 'vimeo', id: '159555362', tags: ['ghosts', 'revolvingdoors', 'sparkles','clarteinflammable'] }, //trois app
+                { type: 'vimeo', id: '156445359', tags: ['oiseaux', 'peaux'] }, //nuee
+                { type: 'soundcloud', id: 'e7ca22213f0f4d3bb6e440d663625878', tags: ['music'] },
+                
             { type: 'image', src: 'https://static.wixstatic.com/media/ef8f85_56b68e39a6de4d278d6cddbee9995921~mv2.jpg/v1/fill/w_508,h_370,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/ef8f85_56b68e39a6de4d278d6cddbee9995921~mv2.jpg', tags: ['travel', 'beach'] },
                 { type: 'youtube', id: 'mBp9LH-vZVI', tags: ['peaux', 'selfstrange'] },
         // Add more media items with corresponding tags
@@ -92,7 +108,14 @@
                     youtubeIframe.frameborder = '0';
                     mediaItem.appendChild(youtubeIframe);
                 }
-
+                else if (item.type === 'soundcloud') {
+                    const soundcloudIframe = document.createElement('iframe');
+                    soundcloudIframe.src = `https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${item.id}`;
+                    soundcloudIframe.width = '300';
+                    soundcloudIframe.height = '200';
+                    soundcloudIframe.frameborder = '0';
+                    mediaItem.appendChild(soundcloudIframe);
+                }
                 mediaGrid.appendChild(mediaItem);
             });
         }
