@@ -17,6 +17,8 @@
 
     <h8>d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d d v d  </h8>
 
+    <p>https://soundcloud.com/hahahadotquery/shjkhgfdghhgfdfghn?si=e7ca22213f0f4d3bb6e440d663625878&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing</p>
+
     <div id="filter-options">
         <label><input type="checkbox" class="tag-filter" value="postreel"> post-réel</label>
         <label><input type="checkbox" class="tag-filter" value="ghosts"> ghosts</label>
@@ -55,70 +57,70 @@
                 { type: 'vimeo', id: '255096648', tags: ['outrenoir'] }, //jour opaque
                 { type: 'vimeo', id: '250028342', tags: ['revolvingdoors'] }, //002
                 { type: 'vimeo', id: '250023909', tags: ['revolvingdoors'] }, //001
-                { type: 'vimeo', id: '159555362', tags: ['ghosts', 'revolvingdoors', 'sparkles','clarteinflammable'] }, //trois app
+                { type: 'vimeo', id: '159555362', tags: ['ghosts', 'revolvingdoors', 'sparkles', 'clarteinflammable'] }, //trois app
                 { type: 'vimeo', id: '156445359', tags: ['oiseaux', 'peaux'] }, //nuee
                 { type: 'soundcloud', id: 'e7ca22213f0f4d3bb6e440d663625878', tags: ['music'] },
-                
-            { type: 'image', src: 'https://static.wixstatic.com/media/ef8f85_56b68e39a6de4d278d6cddbee9995921~mv2.jpg/v1/fill/w_508,h_370,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/ef8f85_56b68e39a6de4d278d6cddbee9995921~mv2.jpg', tags: ['travel', 'beach'] },
+
+                { type: 'image', src: 'https://static.wixstatic.com/media/ef8f85_56b68e39a6de4d278d6cddbee9995921~mv2.jpg/v1/fill/w_508,h_370,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/ef8f85_56b68e39a6de4d278d6cddbee9995921~mv2.jpg', tags: ['travel', 'beach'] },
                 { type: 'youtube', id: 'mBp9LH-vZVI', tags: ['peaux', 'selfstrange'] },
-        // Add more media items with corresponding tags
-                  
-        ];
+                // Add more media items with corresponding tags
 
-        const filterOptions = document.getElementById('filter-options');
-        const mediaGrid = document.getElementById('media-grid');
+            ];
 
-        // Initial display of all media items
-        displayMedia(mediaData);
+            const filterOptions = document.getElementById('filter-options');
+            const mediaGrid = document.getElementById('media-grid');
 
-        // Add event listener to checkboxes
-        filterOptions.addEventListener('change', function () {
-            const selectedTags = Array.from(document.querySelectorAll('.tag-filter:checked')).map(checkbox => checkbox.value);
-            const filteredMedia = filterMediaByTags(mediaData, selectedTags);
-            displayMedia(filteredMedia);
-        });
+            // Initial display of all media items
+            displayMedia(mediaData);
 
-        function filterMediaByTags(mediaArray, selectedTags) {
-            return mediaArray.filter(item => {
-                return selectedTags.every(tag => item.tags.includes(tag));
+            // Add event listener to checkboxes
+            filterOptions.addEventListener('change', function () {
+                const selectedTags = Array.from(document.querySelectorAll('.tag-filter:checked')).map(checkbox => checkbox.value);
+                const filteredMedia = filterMediaByTags(mediaData, selectedTags);
+                displayMedia(filteredMedia);
             });
-        }
 
-        function displayMedia(mediaArray) {
-            mediaGrid.innerHTML = ''; // Clear existing content
+            function filterMediaByTags(mediaArray, selectedTags) {
+                return mediaArray.filter(item => {
+                    return selectedTags.every(tag => item.tags.includes(tag));
+                });
+            }
 
-            mediaArray.forEach(item => {
-                const mediaItem = document.createElement('div');
-                mediaItem.className = 'media-item';
+            function displayMedia(mediaArray) {
+                mediaGrid.innerHTML = ''; // Clear existing content
 
-                if (item.type === 'image') {
-                    mediaItem.innerHTML = `<img src="${item.src}" alt="Media Item">`;
-                } else if (item.type === 'vimeo') {
-                    const vimeoIframe = document.createElement('iframe');
-                    vimeoIframe.src = `https://player.vimeo.com/video/${item.id}`;
-                    vimeoIframe.width = '300';
-                    vimeoIframe.height = '200';
-                    vimeoIframe.frameborder = '0';
-                    mediaItem.appendChild(vimeoIframe);
-                } else if (item.type === 'youtube') {
-                    const youtubeIframe = document.createElement('iframe');
-                    youtubeIframe.src = `https://www.youtube.com/embed/${item.id}`;
-                    youtubeIframe.width = '300';
-                    youtubeIframe.height = '200';
-                    youtubeIframe.frameborder = '0';
-                    mediaItem.appendChild(youtubeIframe);
-                }
-                else if (item.type === 'soundcloud') {
-                    const soundcloudIframe = document.createElement('iframe');
-                    soundcloudIframe.src = `https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${item.id}`;
-                    soundcloudIframe.width = '300';
-                    soundcloudIframe.height = '200';
-                    soundcloudIframe.frameborder = '0';
-                    mediaItem.appendChild(soundcloudIframe);
-                }
-                mediaGrid.appendChild(mediaItem);
-            });
-        }
+                mediaArray.forEach(item => {
+                    const mediaItem = document.createElement('div');
+                    mediaItem.className = 'media-item';
+
+                    if (item.type === 'image') {
+                        mediaItem.innerHTML = `<img src="${item.src}" alt="Media Item">`;
+                    } else if (item.type === 'vimeo') {
+                        const vimeoIframe = document.createElement('iframe');
+                        vimeoIframe.src = `https://player.vimeo.com/video/${item.id}`;
+                        vimeoIframe.width = '300';
+                        vimeoIframe.height = '200';
+                        vimeoIframe.frameborder = '0';
+                        mediaItem.appendChild(vimeoIframe);
+                    } else if (item.type === 'youtube') {
+                        const youtubeIframe = document.createElement('iframe');
+                        youtubeIframe.src = `https://www.youtube.com/embed/${item.id}`;
+                        youtubeIframe.width = '300';
+                        youtubeIframe.height = '200';
+                        youtubeIframe.frameborder = '0';
+                        mediaItem.appendChild(youtubeIframe);
+                    }
+                    else if (item.type === 'soundcloud') {
+                        const soundcloudIframe = document.createElement('iframe');
+                        soundcloudIframe.src = `https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${item.id}`;
+                        soundcloudIframe.width = '300';
+                        soundcloudIframe.height = '200';
+                        soundcloudIframe.frameborder = '0';
+                        mediaItem.appendChild(soundcloudIframe);
+                    }
+                    mediaGrid.appendChild(mediaItem);
+                });
+            }
         });
     </script>
 
