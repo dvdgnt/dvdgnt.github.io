@@ -46,6 +46,7 @@
         <label><input type="checkbox" class="tag-filter" value="cendres"> cendres</label>
         <label><input type="checkbox" class="tag-filter" value="clarteinflammable"> clarté inflammable</label>
         <label><input type="checkbox" class="tag-filter" value="erosion"> érosion</label>
+        <label><input type="checkbox" class="tag-filter" value="drained"> drained</label>
         <label><input type="checkbox" class="tag-filter" value="music"> MUSIC</label>
     </div>
 
@@ -59,7 +60,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const mediaData = [
-                { type: 'vimeo', id: '646227605', tags: ['clarteinflammable'] }, //to the present by passing by
+                { type: 'vimeo', id: '646227605', tags: ['clarteinflammable', 'drained'] }, //to the present by passing by
                 { type: 'vimeo', id: '615076340', tags: ['clarteinflammable', 'oiseaux'] }, //ouv ciel
                 { type: 'vimeo', id: '605924941', tags: ['ghosts'] }, //about ghosts
                 { type: 'vimeo', id: '605906808', tags: ['selfstrange', 'outrenoir', 'peaux'] }, //antispecist meat
@@ -72,11 +73,30 @@
                 { type: 'vimeo', id: '250023909', tags: ['revolvingdoors'] }, //001
                 { type: 'vimeo', id: '159555362', tags: ['ghosts', 'revolvingdoors', 'sparkles', 'clarteinflammable'] }, //trois app
                 { type: 'vimeo', id: '156445359', tags: ['oiseaux', 'peaux'] }, //nuee
-                { type: 'soundcloud', id: '1143302806', tags: ['music'] },
+                { type: 'soundcloud', id: '1143302806', tags: ['music'] }, // !!!
+                { type: 'soundcloud', id: '1127398702', tags: ['music'] }, //guitar
+                { type: 'soundcloud', id: '1034922430', tags: ['music'] }, //rumble
+                { type: 'soundcloud', id: '1034659327', tags: ['music'] }, //true yet in the web
+                { type: 'soundcloud', id: '1016894563', tags: ['music'] }, //can you hear me ? _() & lt; --- you can talk here
+                { type: 'soundcloud', id: '939698656', tags: ['music'] }, //(late)lateagain)late
+                { type: 'soundcloud', id: '939671917', tags: ['music'] }, //missed
+                { type: 'soundcloud', id: '922952980', tags: ['music'] }, //next to still(rebondissements)
+                { type: 'soundcloud', id: '920793649', tags: ['music'] }, //nuit nocturne
+                { type: 'soundcloud', id: '920792086', tags: ['music'] }, //wandering up
+                { type: 'soundcloud', id: '914527240', tags: ['music'] }, //cntchwwwwhnthnkfy - aeeioou
+                { type: 'soundcloud', id: '818088982', tags: ['music'] }, //badaidi
+                { type: 'soundcloud', id: '810541429', tags: ['music'] }, //despair in the room search
+                { type: 'soundcloud', id: '808850341', tags: ['music'] }, //gris
+                { type: 'soundcloud', id: '808840192', tags: ['music'] }, //alinea velenoso v2
+                { type: 'soundcloud', id: '808828612', tags: ['music'] }, //descentes d'orgues v2 (lent)
+                { type: 'soundcloud', id: '808828594', tags: ['music'] }, //descentes d'orgues v1 (lent mais moins)
+                { type: 'soundcloud', id: '674912000', tags: ['music'] }, //alinea velenoso
+                { type: 'soundcloud', id: '674899064', tags: ['music'] }, //flat land blues
+                { type: 'soundcloud', id: '674850719', tags: ['music'] }, //haunted boat corridor
 
                 // { type: 'image', src: 'https://static.wixstatic.com/media/ef8f85_56b68e39a6de4d278d6cddbee9995921~mv2.jpg/v1/fill/w_508,h_370,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/ef8f85_56b68e39a6de4d278d6cddbee9995921~mv2.jpg', tags: ['travel', 'beach'] },
                
-                { type: 'youtube', id: 'mBp9LH-vZVI', tags: ['peaux', 'selfstrange'] },
+                //{ type: 'youtube', id: 'mBp9LH-vZVI', tags: ['peaux', 'selfstrange'] },
                 // Add more media items with corresponding tags
 
             ];
